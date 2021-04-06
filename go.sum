@@ -6,6 +6,8 @@ github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03
 github.com/BurntSushi/xgb v0.0.0-20160522181843-27f122750802/go.mod h1:IVnqGOEym/WlBOVXweHU+Q+/VP0lqqI8lqeDx9IjBqo=
 github.com/Excalibur-1/configuration v0.0.0-20210406035801-e0b595daa4c6 h1:YhcNxl5uypZhkihf2/eEXUbkeesDj3itc33oy9i1eWk=
 github.com/Excalibur-1/configuration v0.0.0-20210406035801-e0b595daa4c6/go.mod h1:jwKa5LLW9cFYTaRAHETcFWE47ncyVoYP3Q/mD1JiZ/Y=
+github.com/Excalibur-1/configuration v1.0.0 h1:OLPV5CDPZAfwQ6fZV1Wdz2rPohI0P+CH+oJnuqe2VTU=
+github.com/Excalibur-1/configuration v1.0.0/go.mod h1:jwKa5LLW9cFYTaRAHETcFWE47ncyVoYP3Q/mD1JiZ/Y=
 github.com/Excalibur-1/gutil v0.0.0-20210330073727-af5cc5f0f34a h1:xoj2SZe2xdSMQ3at15ZDqM8a9cL6DskwORlzb45EEqI=
 github.com/Excalibur-1/gutil v0.0.0-20210330073727-af5cc5f0f34a/go.mod h1:FdXvHkE8fccOPTWs4p6dpNdtv2RX/lR2q+Xg4hhl9ds=
 github.com/alecthomas/template v0.0.0-20160405071501-a0175ee3bccc/go.mod h1:LOuyumcjzFXgccqObfd/Ljyb9UuFJ6TxHnclSeseNhc=

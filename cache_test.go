@@ -9,10 +9,10 @@ import (
 )
 
 func TestReadConfiguration(t *testing.T) {
-	mockEngine := configuration.MockEngine(configuration.StoreConfig{Exp: map[string]string{
+	mockEngine := configuration.MockEngine(map[string]string{
 		"/myconf/base/cache/1000": "{\"provider\":\"redis\",\"host\":\"127.0.0.1\",\"port\":\"6379\",\"password\":\"\"}",
-	}})
-	s, err := mockEngine.String("base", "cache", "", "provider")
+	})
+	s, err := mockEngine.String("myconf", "base", "cache", "", "1000")
 	if err != nil {
 		panic(err)
 	}
