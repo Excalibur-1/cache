@@ -8,11 +8,6 @@ import (
 	"time"
 )
 
-func init() {
-	fmt.Println("Register Mem to Cache Engine ver:1.0.0")
-	Register(Mem, &defaultProvider{})
-}
-
 type defaultProvider struct {
 	mutex       sync.RWMutex
 	cacheList   *list.List

@@ -27,19 +27,6 @@ type Config struct {
 	MaxItemSize int          `json:"max_item_size"` // 默认缓存实现方案的可缓存元素上限
 }
 
-func Register(name RegisterName, provider Provider) {
-	providersMu.Lock()
-	defer providersMu.Unlock()
-	if provider == nil {
-		panic("cache: Register provider is nil")
-	}
-	// 判断是否已有相同的provider实现，有则报错退出
-	if _, dup := providers[name]; dup {
-		panic("cache: Register called twice for provider " + name)
-	}
-	providers[name] = provider
-}
-
 // Engine 缓存引擎定义，通过缓存引擎获取缓存客户端并进行数据缓存操作。系统根据业务类型划分了几个特定的缓存节点类型，每个类型的
 // 缓存节点可以分别指定自己的缓存实现方式，通过配置中心的配置示例如下：
 // 缓存节点服务器的类型，不同节点类型缓存的数据及其目的有所差异，业务系统要根据实际情况进行选择处理。
@@ -48,6 +35,16 @@ func Engine(ctx context.Context, conf Config) (prov Provider) {
 	provider := conf.Provider
 	if provider == "" {
 		panic("没有定义缓存实现信息!")
+	}
+	switch provider {
+	case Mem:
+		fmt.Println("Register Mem to Cache Engine ver:1.0.0")
+		Register(provider, &defaultProvider{})
+	case Redis:
+		fmt.Println("Register Redis to Cache Engine ver:1.0.0")
+		Register(provider, &SingleRedisProvider{})
+	default:
+		panic("不支持的缓存实现类型")
 	}
 	prov, ok := providers[provider]
 	if !ok {
@@ -58,6 +55,19 @@ func Engine(ctx context.Context, conf Config) (prov Provider) {
 		panic("ping 缓存服务失败!")
 	}
 	return
+}
+
+func Register(name RegisterName, provider Provider) {
+	providersMu.Lock()
+	defer providersMu.Unlock()
+	if provider == nil {
+		panic("cache: Register provider is nil")
+	}
+	// 判断是否已有相同的provider实现，有则退出
+	if _, dup := providers[name]; dup {
+		return
+	}
+	providers[name] = provider
 }
 
 // Provider 分布式的缓存操作接口。

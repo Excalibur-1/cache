@@ -8,11 +8,6 @@ import (
 	"github.com/go-redis/redis/v8"
 )
 
-func init() {
-	fmt.Println("Register Redis to Cache Engine ver:1.0.0")
-	Register(Redis, &SingleRedisProvider{})
-}
-
 // SingleRedisProvider 基于Redis单实例的缓存实现(单机）
 type SingleRedisProvider struct {
 	client *redis.Client
