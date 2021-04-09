@@ -59,7 +59,7 @@ func example() {
 
 ```
 
-2.2 读取配置中心配置(zookeeper配置,需要事先添加 configuration.uaf 文件，配置方法见 [configuration](https://github.com/Excalibur-1/configuration) 项目)
+2.2 读取配置中心配置(需要事先添加 configuration.uaf 文件，配置方法见 [configuration](https://github.com/Excalibur-1/configuration) 项目)
 
 ```go
 import (
@@ -71,7 +71,7 @@ import (
 )
 
 func example() {
-	zkEngine := configuration.ZkEngine(configuration.NewStoreConfig())
+	zkEngine := configuration.DefaultEngine()
 	s, err := zkEngine.String("base", "cache", "", "1000")
 	if err != nil {
 		panic(err)
